@@ -3,43 +3,41 @@ function eval() {
     return;
 }
 
-function expressionCalculator(expr) {  
-    
-    let array = expr.split('+').join(' + ').split('-').join(' - ').split('*').join(' * ').split('/').join(' / ').split(')').join(' ) ').split('(').join(' ( ').split(' ').filter(e => e !== '');
+function expressionCalculator(expr) {      
+    let array = expr
+        .split('+').join(' + ')
+        .split('-').join(' - ')
+        .split('*').join(' * ')
+        .split('/').join(' / ')
+        .split(')').join(' ) ')
+        .split('(').join(' ( ')
+        .split(' ').filter(e => e !== '');
     let countL = array.filter(x => x === '(').length;
     let countR = array.filter(x => x === ')').length;
-    if(countL !== countR) {
-        throw("ExpressionError: Brackets must be paired");;
-    }
+    if(countL !== countR)
+        throw("ExpressionError: Brackets must be paired");
 
-   if(countL) {
+   if(countL > 0) {
     for (let i = array.length -1 ; i > -1; i--) {
         if(array[i] === '(') {
-            let j = array.indexOf(')');
+            let j = -1;
+            for (let g = i; g < array.length; g++){        
+                 if(array[g] === ')') {
+                    j = g;
+                    break;
+                 } 
+            }
             let curArr = array.splice(i, j-i+1);
             curArr.pop();
             curArr.shift();
-            console.log('curArr');
-            console.log(curArr);
-            let res = calc(curArr);
-            console.log('res');
-            console.log(res);
-            array.splice(i, 0, res.toString())
-           
+            array.splice(i, 0, calc(curArr).toString()) 
+            }
         }
-        console.log('---');
-        console.log(array);
     }
+    return calc(array);
 }
 
-let res = calc(array);
-
-console.log(array);
-    return res;      
-}
-
-let calc = (array) => {
-    while (array.includes("*") || array.includes("/") || array.includes("+") || array.includes("-")) {      
+let calc = (array) => {     
   
         for (let i = 0; i < array.length; i++) {
             if(array[i] === '/') {
@@ -71,8 +69,7 @@ let calc = (array) => {
                 i = i-1;
                 console.log(array);
             }
-        }
-    }
+        }    
 
    return Number(array[0])
 };
