@@ -12,7 +12,33 @@ function expressionCalculator(expr) {
         throw("ExpressionError: Brackets must be paired");;
     }
 
-    
+   if(countL) {
+    for (let i = array.length -1 ; i > -1; i--) {
+        if(array[i] === '(') {
+            let j = array.indexOf(')');
+            let curArr = array.splice(i, j-i+1);
+            curArr.pop();
+            curArr.shift();
+            console.log('curArr');
+            console.log(curArr);
+            let res = calc(curArr);
+            console.log('res');
+            console.log(res);
+            array.splice(i, 0, res.toString())
+           
+        }
+        console.log('---');
+        console.log(array);
+    }
+}
+
+let res = calc(array);
+
+console.log(array);
+    return res;      
+}
+
+let calc = (array) => {
     while (array.includes("*") || array.includes("/") || array.includes("+") || array.includes("-")) {      
   
         for (let i = 0; i < array.length; i++) {
@@ -48,33 +74,8 @@ function expressionCalculator(expr) {
         }
     }
 
-    return Number(array[0]);
-
-  /*   let mult = arr.reduce(function(sum, currentValue, i, array) {
-        if(currentValue === '*') {
-            console.log(sum);
-            return i === 1 ? Number(array[i-1]) * Number(array[i+1]) : sum * Number(array[i+1]);
-        }
-        else if(currentValue === '/') {
-            console.log(sum);
-            return i === 1 ? Number(array[i-1]) / Number(array[i+1]) : sum / Number(array[i+1]);
-        }
-        else if(currentValue === '+') {
-            console.log(sum);
-            return sum + (Number(array[i-1]) + Number(array[i+1]));
-        }
-        else if(currentValue === '-') {
-            console.log(sum);
-            return sum + (Number(array[i-1]) - Number(array[i+1]));
-        }
-            console.log(sum);
-            return sum;
-     
-      },1);
-
-      return mult */
-      
-}
+   return Number(array[0])
+};
 
 module.exports = {
     expressionCalculator

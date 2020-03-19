@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const { expressionCalculator } = require('./src/index.js');
 
 describe("Easy", function() {
-   it("Test simple addition", function() {
+    it("Test simple addition", function() {
         const expr = "2 + 2";
         const result = 4;
         expect(expressionCalculator(expr)).to.equal(result);
@@ -121,7 +121,7 @@ describe("Easy", function() {
         const expr = " 39 / 41 + 100 + 45 ";
         const result = 145.9512;
         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });  
+    });   
 });
 
  describe("Medium", function() {
@@ -130,7 +130,7 @@ describe("Easy", function() {
         expect(() => expressionCalculator(expr)).to.throw("ExpressionError: Brackets must be paired");
     });
 
-     it("Brackets must be paired", function() {
+    it("Brackets must be paired", function() {
         const expr = "((1 + 2) * 3";
         expect(() => expressionCalculator(expr)).to.throw("ExpressionError: Brackets must be paired");
     });
@@ -138,13 +138,13 @@ describe("Easy", function() {
     it("Brackets must be paired", function() {
         const expr = "((1 + 2 * 3";
         expect(() => expressionCalculator(expr)).to.throw("ExpressionError: Brackets must be paired");
-    });
-/*
-    it("Brackets test 1", function() {
-        const expr = " 20 - 57 * 12 - (  58 + 84 * 32 / 27  ) ";
-        const result = -821.5556;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
+    }); 
+
+     it("Brackets test 1", function() {
+         const expr = " 20 - 57 * 12 - (  58 + 84 * 32 / 27  ) ";
+         const result = -821.5556;
+         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+     });
     
     it("Brackets test 2", function() {
         const expr = " 77 + 79 / 25 * (  64 * 63 - 89 * 14  ) * 49 ";
@@ -169,7 +169,7 @@ describe("Easy", function() {
         const result = 72.6978;
         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
     });
-    
+   
     it("Brackets test 6", function() {
         const expr = " 91 + 18 / (  42 + 62 + 84 * 95  ) + 30 ";
         const result = 121.0022;
@@ -187,7 +187,7 @@ describe("Easy", function() {
         const result = 167.2906;
         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
     });
-    
+     
     it("Brackets test 9", function() {
         const expr = " 44 * 13 / (  26 + 24 * 70 + 89 * 7  ) + 81 ";
         const result = 81.2456;
@@ -210,8 +210,8 @@ describe("Easy", function() {
         const expr = " (  41 * 76 * 79 - 61  ) / 60 + 83 ";
         const result = 4184.7167;
         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-    
+    }); 
+   
     it("Brackets test 13", function() {
         const expr = " (  73 + 85 + 64 / 17  ) * 17 + 31 / 60 ";
         const result = 2750.5167;
@@ -258,7 +258,7 @@ describe("Easy", function() {
         const expr = " 52 * 62 * (  61 + 12 - 14 * 79  ) + 39 ";
         const result = -3330353.0000;
         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    }); */
+    }); 
 }); 
 
 /* describe("Hard", function() {
